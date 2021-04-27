@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="projet.css"/>
+		<title>Ma photo</title>
+	</head>
+	<body>
+		<p>Coucou<br> 
+			<br>
+			<button>clique ici</button>
+			<br>
+			<audio id="audioPlayer" src="machine.mp3" style="display: none;" loop="true" volume="1" paused="true"></audio>
+			<input type="range" value="500" max="1000" min="1" />
+			<div id="carreemagik">
+				<img src="alpaga_1.jpg" alt="photo de moi" class="alpaga">
+				<img src="machine.jpg" class="machine">
+				<br>
+			</div>
+
+		</p>
+	</body>
+	<script type="text/javascript" async="true">
+			let button = document.querySelector("button");
+			let input = document.querySelector("input");
+			let alpaga = document.querySelector(".alpaga");
+			let audioPlayer = document.querySelector("#audioPlayer");
+			button.onclick = function() {
+				alpaga.style.opacity='1'; 
+				document.querySelector('.machine').style.display='block';
+			}
+			input.onchange = function() {
+				alpaga.style.animationDuration=input.value + "ms";
+				console.log(input.value);
+			}
+			alpaga.onclick = function() {
+				if (alpaga.classList.contains("lock")) {
+					alpaga.classList.remove("lock");
+					document.querySelector('.machine').style.opacity='0';
+					audioPlayer.pause();
+				} else {
+					alpaga.classList.add("lock");
+					document.querySelector('.machine').style.opacity='1';
+					audioPlayer.play();
+				}
+			}
+		</script>
+</html>
